@@ -1,0 +1,22 @@
+# 教材使用的数据源清单
+# 每项必须包含:id、name、source、license、chapter
+
+datasets:
+  - id: china-admin-2024
+    name: 中国行政区划 2024
+    chapter: [6, 8]
+    source: "https://www.example.com/..."   # TODO 替换
+    license: "TODO"
+    size: "TODO"
+    format: shapefile
+    download_script: data/scripts/download_china_admin.py
+    checksum_sha256: "TODO"
+
+  - id: beijing-poi-osm
+    name: 北京 POI(OSM 提取)
+    chapter: [5, 8]
+    source: overpass-api
+    license: ODbL
+    size: "~120MB"
+    format: geojson
+    download_script: data/scripts/fetch_beijing_poi.py

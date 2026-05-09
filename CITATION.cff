@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "如果本书对你的工作有帮助,请按以下方式引用。"
+title: "GIS × AI 对话式编程"
+authors:
+  - family-names: "待填"
+    given-names: "待填"
+    affiliation: "待填"
+version: 0.1.0
+date-released: "2026-XX-XX"
+url: "https://github.com/YOUR_NAME/gis-ai-coding-book"
+license: MIT
