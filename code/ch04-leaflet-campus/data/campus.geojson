@@ -1,0 +1,116 @@
+{
+  "type": "FeatureCollection",
+  "name": "campus_poi",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "未名湖",
+        "category": "景观",
+        "desc": "北大地标,冬日湖面结冰可滑冰。湖南岸是博雅塔,北岸是临湖轩。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3101, 39.9985]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "博雅塔",
+        "category": "景观",
+        "desc": "未名湖南岸的水塔,与未名湖并称'一塔湖图',北大象征之一。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3117, 39.9987]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "图书馆",
+        "category": "建筑",
+        "desc": "全国高校最大的图书馆之一,2000 年新馆建成,藏书超过 800 万册。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3118, 39.9969]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "百周年纪念讲堂",
+        "category": "建筑",
+        "desc": "北大文艺演出主要场馆,常有名家讲座和音乐会。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3130, 39.9940]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "学一食堂",
+        "category": "餐饮",
+        "desc": "学生食堂,北大老牌食堂之一,以早点和家常菜见长。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3088, 39.9945]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "name": "燕南园",
+        "category": "景观",
+        "desc": "建于 1920 年代,由 17 座北方四合院组成,曾住过冯友兰、汤用彤等名师。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3145, 39.9955]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "name": "西门",
+        "category": "建筑",
+        "desc": "北大最古老的门,1926 年建成,具有传统宫殿式建筑风格。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3055, 39.9995]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "name": "勺园",
+        "category": "餐饮",
+        "desc": "北大留学生主要食宿区域,周边有多家国际风味餐厅。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3055, 39.9912]
+      }
+    }
+  ]
+}

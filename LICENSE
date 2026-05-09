@@ -1,6 +1,10 @@
-MIT License(仅适用于代码部分)
+本仓库采用双重许可:**代码部分** 适用 MIT 许可证,**教材正文、图表、对话记录** 适用 CC BY-NC-SA 4.0 许可证。
 
-Copyright (c) 2026 [作者姓名]
+================================================================================
+代码部分(适用于 code/、data/scripts/、所有 .py/.js/.html/.css/.sql 文件)
+MIT License
+
+Copyright (c) 2026 [蒯希kuaixi@szu.edu.cn]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +24,41 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
----
+================================================================================
+教材正文与图表(适用于 book/、dialogues/、所有 .md 教学内容、配套图片)
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 
-教材正文、图表、对话记录采用 CC BY-NC-SA 4.0 许可证,详见:
-https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh
+Copyright (c) 2026 [蒯希kuaixi@szu.edu.cn]
+
+完整许可证条款:
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.zh-Hans
+
+简要说明(非法律条款,仅供理解):
+
+您可以自由地:
+  ✓ 共享 — 在任何媒介以任何形式复制、发行本作品
+  ✓ 演绎 — 修改、转换或以本作品为基础进行创作
+
+惟须遵守下列条件:
+  ◆ 署名 — 您必须给出适当的署名,提供指向本许可证的链接,
+          同时标明是否(对原始作品)作了修改
+  ◆ 非商业性使用 — 您不得将本作品用于商业目的
+  ◆ 相同方式共享 — 如果您再混合、转换或者基于本作品进行创作,
+                  您必须基于与原先许可协议相同的许可协议分发您贡献的作品
+
+商业用途(如纸质出版、付费课程、企业培训)需要单独授权,
+请联系作者协商许可。
+
+================================================================================
+第三方内容声明
+
+本仓库中部分内容来自第三方,各自适用其原始许可证:
+
+- OpenStreetMap 数据样例:ODbL(Open Database License)
+- 高德地图瓦片 URL:仅作教学引用,实际使用须遵守高德开放平台条款
+- Mapbox 样式与示例:MIT(@mapbox/mapbox-gl-js)
+- Tailwind CSS:MIT
+- React、Vite、FastAPI 等开源项目:MIT
+- 各章节延伸阅读中提到的论文与博客:版权归原作者所有
+
+任何疑问或商用授权咨询,请提交 Issue 或邮件联系。
