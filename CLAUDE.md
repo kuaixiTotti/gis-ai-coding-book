@@ -13,10 +13,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 章节完成状态
 
-有正文初稿的章节：`ch02-environment`、`ch03-prompt-basics`、`ch04-frontend-maps`。
-其余章节（ch01、ch05–ch12）仅有 README 骨架，待写。
+有正文初稿的章节：ch01–ch05。其余章节（ch06–ch12）仅有 README 骨架，待写。
 
-路线图：每月完成约 1 章，当前对应 `docs/roadmap.md`。
+路线图：四个月版（W1 = 2026-06-15，常规章节两周一章，2026-10-09 前完成 12 章初稿）。周历见 `docs/roadmap.md`，逐周交付物与工时见 `docs/sprint-plan.md`，进度打勾在根目录 `TASKS.md`。每章发布前按 TASKS.md 的"单章交付清单"卡关。
 
 ## 代码质量命令
 
