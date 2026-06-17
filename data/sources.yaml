@@ -3,14 +3,21 @@
 
 datasets:
   - id: china-admin-2024
-    name: 中国行政区划 2024
+    name: 中国县级行政区划 2024(天地图,审图号 GS(2024)0650)
     chapter: [6, 8]
-    source: "https://www.example.com/..."   # TODO 替换
-    license: "TODO"
-    size: "TODO"
-    format: shapefile
+    source: "https://cloudcenter.tianditu.gov.cn/administrativeDivision/"
+    publisher: 国家基础地理信息中心 / 国家地理信息公共服务平台(天地图)
+    review_number: GS(2024)0650        # 审图号:边界合规,适合国内出版
+    license: >-
+      天地图账号登录后公开下载;审图号 GS(2024)0650。
+      用于教学/科研可放心使用;商业出版前须按天地图服务条款再确认授权
+      (见 docs/post-draft-backlog.md 的许可证核查项)。
+    level: county                       # 县级,约 2891 个单元
+    crs: "EPSG:4326"                    # GCS_WGS_1984
+    format: geojson
+    size: "TODO:首次下载后填入"
     download_script: data/scripts/download_china_admin.py
-    checksum_sha256: "TODO"
+    checksum_sha256: "TODO:运行下载脚本后由其计算并填入"
 
   - id: beijing-poi-osm
     name: 北京 POI(OSM 提取)

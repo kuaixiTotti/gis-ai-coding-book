@@ -23,10 +23,12 @@
 
 ## 存量补课(W1–W2 清零)
 
-- [ ] ⬜ **W1** code/ch05-poi-platform/steps/ 快照 ≥4 个 + code-tester 验证
-- [ ] ⬜ **W1** 提交 ch01 未提交的修改
-- [ ] ⬜ **W1** code/ch02-env-check/steps/ 快照 ≥2 个
-- [ ] ⬜ **W1** 锁定 ch06 数据源,登记 data/sources.yaml
+- [x] ✅ **W1** 提交 ch01 未提交的修改(917c79a,06-10 提前完成)
+- [x] ✅ **W1** code/ch02-env-check/steps/ 快照(step-01/02/final)+ 实跑验证 + final 与正文逐字一致(6ab9448)
+- [x] ✅ **W1** ch06 数据源定为天地图 GS(2024)0650 县级(边界合规、适合出版);sources.yaml 补全、写 download_china_admin.py(引导下载+校验,三分支已测)
+      ⏳ 待你登录天地图下载一次后,运行脚本得 size/checksum 填回 sources.yaml
+- [ ] ⬜ **W1.5–W2** ch05 联合任务:代码代写(Claude)+ 正文同步修订 + 分 step 快照 + 验证
+      ⚠️ ch05 代码从未编写,正文也需再改;非简单拆快照
 - [ ] ⬜ **W2** code/ch04-mapbox-heatmap/steps/ 快照 ≥2 个
 - [ ] ⬜ **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)
 - [ ] ⬜ **W2** exercises/ch01–ch05 落地(5 章 × 5 题)
