@@ -27,8 +27,11 @@
 - [x] ✅ **W1** code/ch02-env-check/steps/ 快照(step-01/02/final)+ 实跑验证 + final 与正文逐字一致(6ab9448)
 - [x] ✅ **W1** ch06 数据源定为天地图 GS(2024)0650 县级(边界合规、适合出版);sources.yaml 补全、写 download_china_admin.py(引导下载+校验,三分支已测)
       ⏳ 待你登录天地图下载一次后,运行脚本得 size/checksum 填回 sources.yaml
-- [ ] ⬜ **W1.5–W2** ch05 联合任务:代码代写(Claude)+ 正文同步修订 + 分 step 快照 + 验证
-      ⚠️ ch05 代码从未编写,正文也需再改;非简单拆快照
+- [ ] 🟨 **W1.5–W2** ch05 联合任务:代码代写(Claude)+ 正文同步修订 + 分 step 快照 + 验证
+      设计已定(2026-06-17):Tailwind v3 稳定版;5 步+final(init/mapview/sidebar/detail-style/heatmap-mobile);
+      模拟数据确定性生成 500 条;每步独立可运行(step-02 起需用户自配 .env.local 的 Mapbox token)
+      正文 4 处现在同步改:① 5.8.1 删虚构问题 ② 5.3.2 钉 Tailwind v3 ③ 5.9.1 DetailPanel lon.toFixed bug ④ 5.8.2 高亮给可跑实现
+      进度:⬜ 数据 ⬜ step-01 ⬜ step-02 ⬜ step-03 ⬜ step-04 ⬜ step-05 ⬜ final ⬜ 正文4改
 - [ ] ⬜ **W2** code/ch04-mapbox-heatmap/steps/ 快照 ≥2 个
 - [ ] ⬜ **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)
 - [ ] ⬜ **W2** exercises/ch01–ch05 落地(5 章 × 5 题)
