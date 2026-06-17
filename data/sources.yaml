@@ -12,12 +12,15 @@ datasets:
       天地图账号登录后公开下载;审图号 GS(2024)0650。
       用于教学/科研可放心使用;商业出版前须按天地图服务条款再确认授权
       (见 docs/post-draft-backlog.md 的许可证核查项)。
-    level: county                       # 县级,约 2891 个单元
-    crs: "EPSG:4326"                    # GCS_WGS_1984
+    level: county                       # 县级
+    crs: "EPSG:4490"                    # CGCS2000(实测文件声明,非网传的 WGS84)
     format: geojson
-    size: "TODO:首次下载后填入"
+    size: "9.5MB"
     download_script: data/scripts/download_china_admin.py
-    checksum_sha256: "TODO:运行下载脚本后由其计算并填入"
+    checksum_sha256: "91edf86abe109a1de33052977852e37f848f350d37ae069b40e0d80dcc2a97d3"
+    # 实测结构:2898 个要素 = 2891 县级面(MultiPolygon)+ 7 条境界线(MultiLineString)
+    # 属性字段:name(名称)、gb(国标码,"156"+GB/T 2260 六位码;境界线的 gb 为空)
+    # 这些"面线混排 + 空值 + 编码解析"正好用作 ch06 GeoPandas 清洗练习素材
 
   - id: beijing-poi-osm
     name: 北京 POI(OSM 提取)
