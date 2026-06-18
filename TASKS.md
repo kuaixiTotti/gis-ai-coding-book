@@ -31,7 +31,7 @@
       设计已定(2026-06-17):Tailwind v3 稳定版;5 步+final(init/mapview/sidebar/detail-style/heatmap-mobile);
       模拟数据确定性生成 500 条;每步独立可运行(step-02 起需用户自配 .env.local 的 Mapbox token)
       正文 4 处现在同步改:① 5.8.1 删虚构问题 ② 5.3.2 钉 Tailwind v3 ③ 5.9.1 DetailPanel lon.toFixed bug ④ 5.8.2 高亮给可跑实现
-      进度:⬜ 数据 ⬜ step-01 ⬜ step-02 ⬜ step-03 ⬜ step-04 ⬜ step-05 ⬜ final ⬜ 正文4改
+      进度:✅ 数据 ✅ step-01(npm实测) ✅ step-02(npm构建+冒烟实测) ⬜ step-03 ⬜ step-04 ⬜ step-05 ⬜ final ⬜ 正文4改
 - [ ] ⬜ **W2** code/ch04-mapbox-heatmap/steps/ 快照 ≥2 个
 - [ ] ⬜ **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)
 - [ ] ⬜ **W2** exercises/ch01–ch05 落地(5 章 × 5 题)
