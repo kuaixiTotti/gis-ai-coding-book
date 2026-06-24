@@ -33,8 +33,9 @@
       ⏳ 收尾遗留:ch05 的 dialogues/PROMPTS/exercises 仍在 W2 资产补课周统一做
       正文修订(代码已落地,正文待同步改写):① 5.8.1 虚构问题 ④ 5.8.2 高亮(step-03) ③ 5.9.1 DetailPanel lon.toFixed bug(step-04);② 5.3.2 Tailwind v3 已贯彻全 step
 - [ ] ⬜ **W2** code/ch04-mapbox-heatmap/steps/ 快照 ≥2 个
-- [ ] ⬜ **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)
-- [ ] ⬜ **W2** exercises/ch01–ch05 落地(5 章 × 5 题)
+- [ ] ⬜ **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)—— ⚠️ 阻塞:需作者提供真实对话,不可编造
+- [x] ✅ **W2** exercises/ch01–ch05 落地(5 章 × 5 题,从正文抽取)
+- [x] 🟨 **W2** prompts 库起步:CH04-001/002 已入库;ch03/ch05 待补;所有条目 last_verified/verified_models 待作者确认
 - [ ] ⬜ **W2** prompts/ 库起步:ch03/ch04/ch05 共 ≥7 条
 - [ ] ⬜ **W2** code-tester 回归 ch02/ch04/ch05 全部 steps
 
