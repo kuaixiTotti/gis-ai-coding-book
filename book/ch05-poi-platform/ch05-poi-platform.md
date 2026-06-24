@@ -172,16 +172,16 @@ pnpm dev
 
 ```bash
 pnpm add mapbox-gl
-pnpm add -D tailwindcss@next postcss autoprefixer
+pnpm add -D tailwindcss@^3.4 postcss autoprefixer
 ```
 
-注意:**Tailwind v4 从 2024 年底开始是主流**,API 相比 v3 有变化。如果你装 v3 按官方文档即可,v4 配置会简单得多(它不再需要传统的 `tailwind.config.js`)。
+> 📌 本书统一用 **Tailwind v3**(写作时钉到 `3.4` 这条稳定线),它的生态最成熟、教程最多,配置方式多年稳定。Tailwind v4 在 2024 年底之后逐渐流行,配置更简(用 `@tailwindcss/vite` 插件、不再需要 `tailwind.config.js`),但 API 和 v3 不同——本书示例一律按 v3 来,**不要装 `tailwindcss@next` 或 v4**,否则下面的配置步骤和代码会对不上。
 
-这里让 AI 带你完成 Tailwind 的配置:
+这里让 AI 带你完成 Tailwind v3 的配置:
 
-> 👤 我刚用 Vite 创建了 React 项目,装了 tailwindcss@next、postcss、autoprefixer。请帮我:
-> 1. 配置 Tailwind 使其能在 Vite + React 项目里工作
-> 2. 在 src/index.css 中加入必要的 @import
+> 👤 我刚用 Vite 创建了 React 项目,装了 tailwindcss@^3.4、postcss、autoprefixer。请帮我:
+> 1. 用 Tailwind v3 的方式配置,使其能在 Vite + React 项目里工作(生成 `tailwind.config.js` 和 `postcss.config.js`,`content` 指向 index.html 和 src)
+> 2. 在 src/index.css 中加入必要的 `@tailwind` 指令
 > 3. 给我一个 App.jsx 的最简测试代码,验证 Tailwind 生效(比如一个蓝色大标题)
 
 AI 会给出具体的配置步骤。跟着做,几分钟内你会看到首页变成一个用 Tailwind 写的简单组件。
@@ -746,41 +746,19 @@ AI 会给你一份审查报告。**这是你从本项目学到最有价值的东
 
 ## 5.8 联动 Mapbox 图层:筛选和高亮
 
-上一节,侧边栏的筛选改的是 `filteredPois`,然后作为 prop 传给了 `MapView`。理论上地图应该跟着变——但**你会发现地图实际上没有变**。
+上一节,侧边栏的筛选改的是 `filteredPois`,而 App 把 `filteredPois` 作为 `pois` prop 传给了 `MapView`。MapView 的 useEffect 依赖 `pois`,所以筛选一变,地图就会 `setData` 重绘——**筛选已经自动联动了**,现在刷新页面就能看到取消某个类别时地图上的点跟着变少。
 
-为什么?回去看 `MapView.jsx` 的 useEffect:
+这一节我们先把"为什么它能自动联动"想清楚,再加一个真正的新功能:选中高亮。
 
-```jsx
-useEffect(() => {
-  // ...
-  if (map.getSource('pois')) {
-    map.getSource('pois').setData(geojson);
-  } else {
-    // ...
-  }
-}, [pois, onPoiClick]);
-```
+### 5.8.1 两种联动思路的取舍
 
-它只在 `pois` 变化时更新数据。但我们传进去的 prop 名叫 `pois`——实际上传的是 `filteredPois`。这个名字不匹配导致理解混乱,我们现在来修一下。
+筛选联动有两种实现,本章选了其中一种,值得对比一下:
 
-### 5.8.1 思路对齐
+**方法 A(本章用的)**:App 把 `filteredPois` 传给 MapView,MapView 只负责"显示传进来的这些点"。每次筛选都把过滤后的整份 GeoJSON 重新 `setData` 推给地图。简单直接,组件职责清晰。
 
-两种改法:
+**方法 B**:App 始终传全部 `pois`,另外把筛选条件(activeCategories)也传进去,让 Mapbox 用图层的 `filter` 表达式在渲染层过滤,数据不重传。性能更好,但组件间耦合变复杂。
 
-**方法 A**:App 传 `filteredPois` 给 MapView,MapView 只关心"显示这些点"。简单直接,但每次筛选都重算一整个 GeoJSON 推到地图,数据量大时会慢。
-
-**方法 B**:App 始终传全部 `pois` 给 MapView,另外再传当前筛选条件(activeCategories),让 Mapbox 用 `filter` 表达式在图层级别做过滤。速度快,但组件间耦合变复杂。
-
-对于 500 个点的量级,**方法 A 够用**。对于几万、几十万的量级,应该用方法 B。
-
-我们用方法 A:
-
-```jsx
-// App.jsx
-<MapView pois={filteredPois} onPoiClick={setSelectedPoi} />
-```
-
-(实际上我们刚才就是这么传的,所以逻辑上没问题——之前说"地图没变"是我虚构的问题,用来引出讨论。真实情况下现在刷新就能看到筛选生效。)
+判断依据是数据量:500 个点用方法 A 毫无压力(`setData` 很快);到几万、几十万点时,频繁重传整份数据才会成为瓶颈,那时才值得换方法 B。**先用够简单的方案,等真遇到性能问题再优化**——这是贯穿本书的工程态度。
 
 ### 5.8.2 让选中的 POI 在地图上突出
 
@@ -792,51 +770,44 @@ useEffect(() => {
 > 2. 选中的 POI 在地图上半径从 6 变成 12,边框变金色
 > 3. 未选中的 POI 保持原样
 >
-> 用 Mapbox 的 filter 表达式或 feature-state 实现,不要重建整个图层。
+> 飞过去用 `flyTo`;高亮用 `setPaintProperty` 在选中变化时重新下发 `case` 表达式,不要重建整个图层。
 
-AI 的实现会用 `feature-state`(Mapbox 的一个高级特性):
+这里有一个**关键的坑**:很多人(包括 AI 的第一版)会把高亮写在 `addLayer` 的 `paint` 里,用 `case` 表达式判断 `selectedPoi?.id`。但 `paint` 是建图层时一次性求值的,**之后 `selectedPoi` 再变,图层样式不会自动更新**。正确做法是单独用一个 `useEffect`,在 `selectedPoi` 变化时调用 `setPaintProperty` 把新的 `case` 表达式重新下发给地图:
 
 ```jsx
-// 在 App 里多传一个 prop
+// App.jsx 多传一个 prop
 <MapView pois={filteredPois} selectedPoi={selectedPoi} onPoiClick={setSelectedPoi} />
 
-// MapView.jsx 加一个 useEffect
+// MapView.jsx:selectedPoi 变化时,飞过去 + 重新下发高亮
 useEffect(() => {
   const map = mapRef.current;
-  if (!map || !selectedPoi) return;
+  if (!map) return;
 
-  // 飞过去
-  map.flyTo({
-    center: [selectedPoi.lon, selectedPoi.lat],
-    zoom: 15,
-    duration: 1000
-  });
-}, [selectedPoi]);
-
-// 图层样式改为用 case 表达式,识别 selectedPoi id
-map.addLayer({
-  id: 'poi-circles',
-  type: 'circle',
-  source: 'pois',
-  paint: {
-    'circle-radius': [
-      'case',
-      ['==', ['get', 'id'], selectedPoi?.id || -1], 12,
-      6
-    ],
-    'circle-stroke-color': [
-      'case',
-      ['==', ['get', 'id'], selectedPoi?.id || -1], '#fbbf24',
-      '#fff'
-    ],
-    // ...
+  // 1) 高亮:选中的点半径 12、描边金色;其余维持原样
+  const id = selectedPoi?.id ?? -1;
+  if (map.getLayer('poi-circles')) {
+    map.setPaintProperty('poi-circles', 'circle-radius', [
+      'case', ['==', ['get', 'id'], id], 12, 6,
+    ]);
+    map.setPaintProperty('poi-circles', 'circle-stroke-color', [
+      'case', ['==', ['get', 'id'], id], '#fbbf24', '#fff',
+    ]);
   }
-});
+
+  // 2) 平滑飞过去
+  if (selectedPoi) {
+    map.flyTo({
+      center: [Number(selectedPoi.lon), Number(selectedPoi.lat)],
+      zoom: 15,
+      duration: 1000,
+    });
+  }
+}, [selectedPoi]);
 ```
 
-这里有一个微妙的问题:`selectedPoi` 变化时整个图层样式要重新应用,每次都调用 `setPaintProperty`。AI 可能给你两种方案,具体选哪种取决于 AI 的实现细节。这部分如果你想深入学 Mapbox 优化,值得专门问 AI 几轮。
+> 💬 注意 `flyTo` 的坐标用了 `Number(...)` 包一层。这是为下一节埋的伏笔:POI 从地图点击进来时,坐标可能是字符串,直接用会出问题——5.9.1 会讲。
 
-**在学习阶段先做出能用的版本,性能优化留到第 10 章项目讨论**。
+**学习阶段先做出能用的版本即可,性能优化(比如改用 `feature-state`)留到第 10 章项目里讨论**。
 
 ### 5.8.3 一次 commit
 
@@ -868,6 +839,15 @@ AI 的产出大致如下(省略):
 export default function DetailPanel({ poi, onClose }) {
   if (!poi) return null;
 
+  // poi 可能来自两条路径:侧边栏(原始对象,坐标是数字)或地图点击
+  // (Mapbox feature.properties,坐标可能是字符串)。统一用 Number 兜底。
+  const lon = Number(poi.lon);
+  const lat = Number(poi.lat);
+  const coordText =
+    Number.isFinite(lon) && Number.isFinite(lat)
+      ? `${lon.toFixed(5)}, ${lat.toFixed(5)}`
+      : `${poi.lon}, ${poi.lat}`;
+
   return (
     <div className="absolute top-0 right-0 w-80 h-full bg-white shadow-xl
                     z-10 transition-transform duration-300
@@ -895,12 +875,14 @@ export default function DetailPanel({ poi, onClose }) {
 
       <div className="mt-4 pt-4 border-t text-xs text-gray-500 space-y-1">
         <div>营业时间:{poi.open_time}</div>
-        <div>坐标:{poi.lon.toFixed(5)}, {poi.lat.toFixed(5)}</div>
+        <div>坐标:{coordText}</div>
       </div>
     </div>
   );
 }
 ```
+
+> ⚠️ 这里有个真实会踩的坑:很容易直接写 `poi.lon.toFixed(5)`。当 POI 从**侧边栏**点进来时 `poi` 是原始对象,`lon` 是数字,没问题;但从**地图点击**进来时,`poi` 来自 Mapbox 的 `feature.properties`,数值字段可能是字符串,对字符串调 `.toFixed` 会直接报 `TypeError`。所以上面先用 `Number(poi.lon)` 转一下,并用 `Number.isFinite` 兜底——两条选中路径都安全。这也呼应了 5.8.2 里 `flyTo` 用 `Number(...)` 的原因。
 
 在 App.jsx 里把它加进来:
 
