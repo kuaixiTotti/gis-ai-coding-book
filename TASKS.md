@@ -27,12 +27,10 @@
 - [x] ✅ **W1** code/ch02-env-check/steps/ 快照(step-01/02/final)+ 实跑验证 + final 与正文逐字一致(6ab9448)
 - [x] ✅ **W1** ch06 数据源定为天地图 GS(2024)0650 县级(边界合规、适合出版);sources.yaml 补全、写 download_china_admin.py(引导下载+校验,三分支已测)
       ⏳ 待你登录天地图下载一次后,运行脚本得 size/checksum 填回 sources.yaml
-- [ ] 🟨 **W1.5–W2** ch05 联合任务:代码代写(Claude)+ 正文同步修订 + 分 step 快照 + 验证
-      设计已定(2026-06-17):Tailwind v3 稳定版;5 步+final(init/mapview/sidebar/detail-style/heatmap-mobile);
-      模拟数据确定性生成 500 条;每步独立可运行(step-02 起需用户自配 .env.local 的 Mapbox token)
-      正文 4 处现在同步改:① 5.8.1 删虚构问题 ② 5.3.2 钉 Tailwind v3 ③ 5.9.1 DetailPanel lon.toFixed bug ④ 5.8.2 高亮给可跑实现
-      进度:✅ 数据 ✅ step-01~05(用户已验 02-05) ✅ final(成品README+部署说明,构建冒烟过) ✅ 项目主README ⬜ 正文4改
-      ✅ 代码部分全部完成。剩:正文 4 处同步改写(① 5.8.1 虚构问题 ② 5.3.2 Tailwind v3 ③ 5.9.1 坐标bug ④ 5.8.2 高亮)
+- [x] ✅ **W1.5–W2** ch05 联合任务完成:代码(数据+step-01~05+final+主README)+ 正文 4 处修订
+      代码:用户已验 step-02~05 浏览器渲染;final 构建冒烟过
+      正文修订(9c12643):① 5.8.1 删虚构问题 ② 5.3.2 钉 Tailwind v3 ③ 5.9.1 坐标 Number 兜底 ④ 5.8.2 高亮 setPaintProperty
+      ⏳ 收尾遗留:ch05 的 dialogues/PROMPTS/exercises 仍在 W2 资产补课周统一做
       正文修订(代码已落地,正文待同步改写):① 5.8.1 虚构问题 ④ 5.8.2 高亮(step-03) ③ 5.9.1 DetailPanel lon.toFixed bug(step-04);② 5.3.2 Tailwind v3 已贯彻全 step
 - [ ] ⬜ **W2** code/ch04-mapbox-heatmap/steps/ 快照 ≥2 个
 - [ ] ⬜ **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)
