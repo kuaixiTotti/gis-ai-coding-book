@@ -26,14 +26,14 @@
 - [x] ✅ **W1** 提交 ch01 未提交的修改(917c79a,06-10 提前完成)
 - [x] ✅ **W1** code/ch02-env-check/steps/ 快照(step-01/02/final)+ 实跑验证 + final 与正文逐字一致(6ab9448)
 - [x] ✅ **W1** ch06 数据源定为天地图 GS(2024)0650 县级(边界合规、适合出版);sources.yaml 补全、写 download_china_admin.py(引导下载+校验,三分支已测)
-      ⏳ 待你登录天地图下载一次后,运行脚本得 size/checksum 填回 sources.yaml
+      ✅ size/checksum 已填入(9.5MB / 91edf86…;用户复跑结果一致,数据可重现)
 - [x] ✅ **W1.5–W2** ch05 联合任务完成:代码(数据+step-01~05+final+主README)+ 正文 4 处修订
       代码:用户已验 step-02~05 浏览器渲染;final 构建冒烟过
       正文修订(9c12643):① 5.8.1 删虚构问题 ② 5.3.2 钉 Tailwind v3 ③ 5.9.1 坐标 Number 兜底 ④ 5.8.2 高亮 setPaintProperty
       ⏳ 收尾遗留:ch05 的 dialogues/PROMPTS/exercises 仍在 W2 资产补课周统一做
       正文修订(代码已落地,正文待同步改写):① 5.8.1 虚构问题 ④ 5.8.2 高亮(step-03) ③ 5.9.1 DetailPanel lon.toFixed bug(step-04);② 5.3.2 Tailwind v3 已贯彻全 step
 - [ ] ⬜ **W2** code/ch04-mapbox-heatmap/steps/ 快照 ≥2 个
-- [ ] ⬜ **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)—— ⚠️ 阻塞:需作者提供真实对话,不可编造
+- [ ] 🟨 **W2** 建 dialogues/,ch01–ch05 各 ≥1 篇对话入库(脱敏)—— ✅ ch02 已开张(let-ai-write-env-check,Kimi 真实对话);ch01/03/04/05 仍需作者提供素材
 - [x] ✅ **W2** exercises/ch01–ch05 落地(5 章 × 5 题,从正文抽取)
 - [x] 🟨 **W2** prompts 库起步:CH04-001/002 已入库;ch03/ch05 待补;所有条目 last_verified/verified_models 待作者确认
 - [ ] ⬜ **W2** prompts/ 库起步:ch03/ch04/ch05 共 ≥7 条
